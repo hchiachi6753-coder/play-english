@@ -1,0 +1,48 @@
+export interface Word {
+  english: string;
+  chinese: string;
+  example?: string;
+}
+
+export const words: Word[] = [
+  { english: "apple", chinese: "蘋果", example: "I eat an apple every day." },
+  { english: "book", chinese: "書", example: "This book is very interesting." },
+  { english: "cat", chinese: "貓", example: "The cat is sleeping." },
+  { english: "dog", chinese: "狗", example: "I have a cute dog." },
+  { english: "elephant", chinese: "大象", example: "The elephant is big." },
+  { english: "fish", chinese: "魚", example: "The fish swims in the water." },
+  { english: "green", chinese: "綠色", example: "The grass is green." },
+  { english: "happy", chinese: "快樂的", example: "I am very happy today." },
+  { english: "ice cream", chinese: "冰淇淋", example: "I love ice cream!" },
+  { english: "jump", chinese: "跳", example: "The rabbit can jump high." },
+  { english: "king", chinese: "國王", example: "The king lives in a castle." },
+  { english: "lion", chinese: "獅子", example: "The lion is the king of animals." },
+  { english: "moon", chinese: "月亮", example: "The moon is bright tonight." },
+  { english: "night", chinese: "夜晚", example: "Good night! Sleep well." },
+  { english: "orange", chinese: "橘子/橘色", example: "This orange is sweet." },
+  { english: "pencil", chinese: "鉛筆", example: "I write with a pencil." },
+  { english: "queen", chinese: "女王", example: "The queen is beautiful." },
+  { english: "rabbit", chinese: "兔子", example: "The rabbit has long ears." },
+  { english: "sun", chinese: "太陽", example: "The sun is shining." },
+  { english: "tree", chinese: "樹", example: "There is a big tree in the garden." },
+  { english: "umbrella", chinese: "雨傘", example: "Take an umbrella, it might rain." },
+  { english: "vegetable", chinese: "蔬菜", example: "Eat more vegetables!" },
+  { english: "water", chinese: "水", example: "I drink water every day." },
+  { english: "yellow", chinese: "黃色", example: "The banana is yellow." },
+  { english: "zebra", chinese: "斑馬", example: "The zebra has black and white stripes." },
+  { english: "teacher", chinese: "老師", example: "My teacher is very kind." },
+  { english: "student", chinese: "學生", example: "I am a good student." },
+  { english: "family", chinese: "家庭", example: "I love my family." },
+  { english: "friend", chinese: "朋友", example: "She is my best friend." },
+  { english: "school", chinese: "學校", example: "I go to school every day." },
+  { english: "breakfast", chinese: "早餐", example: "I have breakfast at 7 o'clock." },
+  { english: "lunch", chinese: "午餐", example: "What do you want for lunch?" },
+  { english: "dinner", chinese: "晚餐", example: "Let's have dinner together." },
+  { english: "morning", chinese: "早上", example: "Good morning!" },
+  { english: "afternoon", chinese: "下午", example: "See you this afternoon." },
+  { english: "beautiful", chinese: "美麗的", example: "The flower is beautiful." },
+  { english: "big", chinese: "大的", example: "This is a big house." },
+  { english: "small", chinese: "小的", example: "The ant is very small." },
+  { english: "fast", chinese: "快的", example: "The car is very fast." },
+  { english: "slow", chinese: "慢的", example: "The turtle is slow." },
+];
