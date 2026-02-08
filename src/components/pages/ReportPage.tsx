@@ -276,7 +276,7 @@ export function ReportPage() {
   if (!report) return null;
 
   function getLevelInfo() {
-    switch (report.level) {
+    switch (report!.level) {
       case 'junior-high':
         return { emoji: '🏆', color: '#9B59B6', colorRGB: [155, 89, 182] as [number, number, number], label: '國中程度', labelEn: 'Junior High Level', desc: '英文能力非常優秀！', descEn: 'Excellent!', star: 5 };
       case 'elementary-3':
