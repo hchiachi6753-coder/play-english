@@ -1,10 +1,10 @@
 'use client';
 
-import { Question } from '@/stores/gameStore';
+import { FillBlankQuestion } from '@/stores/gameStore';
 import { cn } from '@/lib/utils';
 
 interface QuestionCardProps {
-  question: Question;
+  question: FillBlankQuestion;
   className?: string;
 }
 
