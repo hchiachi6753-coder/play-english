@@ -16,7 +16,7 @@ export function WelcomePage() {
         marginBottom: '20px',
       }}>
         {/* 遊戲圖標 */}
-        <div style={{ fontSize: '80px', marginBottom: '10px' }}>🎮</div>
+        <div style={{ fontSize: '80px', marginBottom: '10px' }}>🌟</div>
         
         {/* 標題 */}
         <h1 style={{

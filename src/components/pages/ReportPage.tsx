@@ -463,6 +463,15 @@ export function ReportPage() {
             </div>
           )}
         </div>
+
+        {/* 結束遊戲按鈕 */}
+        <button onClick={handlePlayAgain} style={{
+          width: '100%', padding: '16px', fontSize: '18px', fontWeight: '600', color: '#666',
+          background: 'rgba(255,255,255,0.8)', border: '2px solid #ddd',
+          borderRadius: '12px', cursor: 'pointer', marginTop: '12px',
+        }}>
+          🏠 結束遊戲
+        </button>
       </div>
 
       <style jsx>{`
