@@ -69,43 +69,43 @@ export function ReportPage() {
       pdf.setFontSize(10);
       pdf.text(`測驗日期：${new Date().toLocaleDateString('zh-TW')}`, pageWidth / 2, 45, { align: 'center' });
       
-      y = 65;
+      y = 62;
       
       // ===== 學生資訊卡片 =====
       pdf.setFillColor(248, 249, 250);
-      pdf.roundedRect(margin, y, contentWidth, 28, 4, 4, 'F');
+      pdf.roundedRect(margin, y, contentWidth, 22, 4, 4, 'F');
       pdf.setDrawColor(180, 180, 180);
-      pdf.roundedRect(margin, y, contentWidth, 28, 4, 4, 'S');
+      pdf.roundedRect(margin, y, contentWidth, 22, 4, 4, 'S');
       
-      pdf.setFontSize(18);
+      pdf.setFontSize(16);
       pdf.setTextColor(30, 30, 30);
-      pdf.text(`${childInfo.name}`, margin + 12, y + 12);
-      pdf.text(`${childInfo.age} 歲`, margin + 90, y + 12);
+      pdf.text(`${childInfo.name}`, margin + 10, y + 9);
+      pdf.text(`${childInfo.age} 歲`, margin + 80, y + 9);
       
       const levelInfo = getLevelInfo();
-      pdf.setFontSize(16);
+      pdf.setFontSize(14);
       pdf.setTextColor(levelInfo.colorRGB[0], levelInfo.colorRGB[1], levelInfo.colorRGB[2]);
-      pdf.text(`${levelInfo.label}`, margin + 12, y + 24);
+      pdf.text(`${levelInfo.label}`, margin + 10, y + 18);
       
-      y += 35;
+      y += 28;
       
       // ===== 程度評估大卡片 =====
       pdf.setFillColor(levelInfo.colorRGB[0], levelInfo.colorRGB[1], levelInfo.colorRGB[2]);
-      pdf.roundedRect(margin, y, contentWidth, 50, 6, 6, 'F');
+      pdf.roundedRect(margin, y, contentWidth, 38, 6, 6, 'F');
       
-      pdf.setFontSize(32);
+      pdf.setFontSize(26);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(levelInfo.label, pageWidth / 2, y + 22, { align: 'center' });
+      pdf.text(levelInfo.label, pageWidth / 2, y + 16, { align: 'center' });
       
-      pdf.setFontSize(16);
-      pdf.text(levelInfo.desc, pageWidth / 2, y + 36, { align: 'center' });
+      pdf.setFontSize(14);
+      pdf.text(levelInfo.desc, pageWidth / 2, y + 27, { align: 'center' });
       
       // 星星
-      pdf.setFontSize(18);
+      pdf.setFontSize(14);
       const stars = '★'.repeat(levelInfo.star) + '☆'.repeat(5 - levelInfo.star);
-      pdf.text(stars, pageWidth / 2, y + 47, { align: 'center' });
+      pdf.text(stars, pageWidth / 2, y + 36, { align: 'center' });
       
-      y += 60;
+      y += 44;
       
       // ===== 成績三欄 =====
       const accuracy = Math.round(report.accuracy);
@@ -114,42 +114,42 @@ export function ReportPage() {
       const seconds = totalTime % 60;
       
       const boxWidth = (contentWidth - 10) / 3;
-      const boxHeight = 35;
+      const boxHeight = 28;
       
       // 答對題數
       pdf.setFillColor(255, 193, 7);
       pdf.roundedRect(margin, y, boxWidth, boxHeight, 4, 4, 'F');
-      pdf.setFontSize(26);
+      pdf.setFontSize(20);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(`${report.correctCount}/${report.totalQuestions}`, margin + boxWidth/2, y + 16, { align: 'center' });
-      pdf.setFontSize(13);
-      pdf.text('答對題數', margin + boxWidth/2, y + 30, { align: 'center' });
+      pdf.text(`${report.correctCount}/${report.totalQuestions}`, margin + boxWidth/2, y + 12, { align: 'center' });
+      pdf.setFontSize(11);
+      pdf.text('答對題數', margin + boxWidth/2, y + 23, { align: 'center' });
       
       // 正確率
       pdf.setFillColor(46, 204, 113);
       pdf.roundedRect(margin + boxWidth + 5, y, boxWidth, boxHeight, 4, 4, 'F');
-      pdf.setFontSize(26);
-      pdf.text(`${accuracy}%`, margin + boxWidth + 5 + boxWidth/2, y + 16, { align: 'center' });
-      pdf.setFontSize(13);
-      pdf.text('正確率', margin + boxWidth + 5 + boxWidth/2, y + 30, { align: 'center' });
+      pdf.setFontSize(20);
+      pdf.text(`${accuracy}%`, margin + boxWidth + 5 + boxWidth/2, y + 12, { align: 'center' });
+      pdf.setFontSize(11);
+      pdf.text('正確率', margin + boxWidth + 5 + boxWidth/2, y + 23, { align: 'center' });
       
       // 作答時間
       pdf.setFillColor(155, 89, 182);
       pdf.roundedRect(margin + (boxWidth + 5) * 2, y, boxWidth, boxHeight, 4, 4, 'F');
-      pdf.setFontSize(26);
-      pdf.text(`${minutes}:${seconds.toString().padStart(2, '0')}`, margin + (boxWidth + 5) * 2 + boxWidth/2, y + 16, { align: 'center' });
-      pdf.setFontSize(13);
-      pdf.text('作答時間', margin + (boxWidth + 5) * 2 + boxWidth/2, y + 30, { align: 'center' });
+      pdf.setFontSize(20);
+      pdf.text(`${minutes}:${seconds.toString().padStart(2, '0')}`, margin + (boxWidth + 5) * 2 + boxWidth/2, y + 12, { align: 'center' });
+      pdf.setFontSize(11);
+      pdf.text('作答時間', margin + (boxWidth + 5) * 2 + boxWidth/2, y + 23, { align: 'center' });
       
-      y += 45;
+      y += 34;
       
       // ===== 難度分析 =====
       pdf.setFillColor(248, 249, 250);
-      pdf.roundedRect(margin, y, contentWidth, 55, 4, 4, 'F');
+      pdf.roundedRect(margin, y, contentWidth, 42, 4, 4, 'F');
       
-      pdf.setFontSize(16);
+      pdf.setFontSize(14);
       pdf.setTextColor(30, 30, 30);
-      pdf.text('難度分析', margin + 12, y + 14);
+      pdf.text('難度分析', margin + 10, y + 11);
       
       const difficulties = [
         { label: '簡單題', data: report.difficultyBreakdown.easy, color: [46, 204, 113] },
@@ -157,65 +157,62 @@ export function ReportPage() {
         { label: '挑戰題', data: report.difficultyBreakdown.hard, color: [231, 76, 60] },
       ];
       
-      let barY = y + 24;
-      const barWidth = contentWidth - 85;
+      let barY = y + 18;
+      const barWidth = contentWidth - 80;
       
       difficulties.forEach((d) => {
-        pdf.setFontSize(12);
+        pdf.setFontSize(10);
         pdf.setTextColor(40, 40, 40);
-        pdf.text(d.label, margin + 12, barY + 5);
+        pdf.text(d.label, margin + 10, barY + 4);
         
         // 背景條
         pdf.setFillColor(200, 200, 200);
-        pdf.roundedRect(margin + 45, barY - 2, barWidth, 10, 2, 2, 'F');
+        pdf.roundedRect(margin + 38, barY - 1, barWidth, 7, 2, 2, 'F');
         
         // 進度條
         const pct = d.data.total > 0 ? d.data.correct / d.data.total : 0;
         pdf.setFillColor(d.color[0], d.color[1], d.color[2]);
         if (pct > 0) {
-          pdf.roundedRect(margin + 45, barY - 2, barWidth * pct, 10, 2, 2, 'F');
+          pdf.roundedRect(margin + 38, barY - 1, barWidth * pct, 7, 2, 2, 'F');
         }
         
         // 數字
-        pdf.setFontSize(12);
+        pdf.setFontSize(10);
         pdf.setTextColor(30, 30, 30);
-        pdf.text(`${d.data.correct}/${d.data.total} (${Math.round(d.data.accuracy)}%)`, margin + 50 + barWidth, barY + 5);
+        pdf.text(`${d.data.correct}/${d.data.total} (${Math.round(d.data.accuracy)}%)`, margin + 42 + barWidth, barY + 4);
         
-        barY += 14;
+        barY += 10;
       });
       
-      y += 65;
+      y += 48;
       
       // ===== 學習建議 =====
       pdf.setFillColor(102, 126, 234);
-      pdf.roundedRect(margin, y, contentWidth, 45, 4, 4, 'F');
+      pdf.roundedRect(margin, y, contentWidth, 35, 4, 4, 'F');
       
-      pdf.setFontSize(16);
+      pdf.setFontSize(14);
       pdf.setTextColor(255, 255, 255);
-      pdf.text('學習建議', margin + 12, y + 14);
+      pdf.text('學習建議', margin + 10, y + 11);
       
-      pdf.setFontSize(13);
-      let recY = y + 26;
+      pdf.setFontSize(11);
+      let recY = y + 20;
       report.recommendations.slice(0, 2).forEach((rec) => {
-        pdf.text(`• ${rec}`, margin + 12, recY);
-        recY += 10;
+        pdf.text(`• ${rec}`, margin + 10, recY);
+        recY += 8;
       });
       
-      y += 55;
+      y += 40;
       
       // ===== OiKID 推廣 =====
       pdf.setFillColor(255, 107, 53);
-      pdf.roundedRect(margin, y, contentWidth, 40, 6, 6, 'F');
-      
-      pdf.setFontSize(18);
-      pdf.setTextColor(255, 255, 255);
-      pdf.text(`想讓 ${childInfo.name} 口說英文更進步？`, pageWidth / 2, y + 16, { align: 'center' });
+      pdf.roundedRect(margin, y, contentWidth, 32, 6, 6, 'F');
       
       pdf.setFontSize(14);
-      pdf.text('OiKID 兒童線上英文 ｜ 聽說讀寫全方面加強', pageWidth / 2, y + 28, { align: 'center' });
+      pdf.setTextColor(255, 255, 255);
+      pdf.text(`想讓 ${childInfo.name} 口說英文更進步？`, pageWidth / 2, y + 12, { align: 'center' });
       
       pdf.setFontSize(12);
-      pdf.text('www.oikid.com', pageWidth / 2, y + 38, { align: 'center' });
+      pdf.text('OiKID 兒童線上英文 ｜ www.oikid.com', pageWidth / 2, y + 24, { align: 'center' });
       
       // ===== 頁尾 =====
       pdf.setFontSize(8);

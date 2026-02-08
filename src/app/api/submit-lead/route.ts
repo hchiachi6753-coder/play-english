@@ -41,6 +41,7 @@ async function sendToGoogleSheets(data: LeadData) {
         parentName: data.parentName,
         phone: data.phone,
         referralCode: data.referralCode || '',
+        referredBy: data.referredBy || '',
         bookingDate: data.booking?.date || '',
         bookingTimeSlot: data.booking?.timeSlot || '',
         level: data.level || '',
