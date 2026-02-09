@@ -1,9 +1,30 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useGameStore } from '@/stores/gameStore';
 
 export function WelcomePage() {
   const setPhase = useGameStore((state) => state.setPhase);
+  const setParentInfo = useGameStore((state) => state.setParentInfo);
+  const parentInfo = useGameStore((state) => state.parentInfo);
+
+  // 讀取 URL 參數：sales（業務）或 ref（推薦碼）
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const sales = params.get('sales');  // 業務專屬連結
+      const ref = params.get('ref');      // 推薦碼（可能是業務或客戶）
+      
+      if (sales || ref) {
+        setParentInfo({
+          name: parentInfo?.name || '',
+          phone: parentInfo?.phone || '',
+          salesSource: sales || undefined,
+          referredBy: ref || sales || undefined,  // 如果有 ref 用 ref，否則用 sales
+        });
+      }
+    }
+  }, []);
 
   return (
     <div style={{ textAlign: 'center' }}>

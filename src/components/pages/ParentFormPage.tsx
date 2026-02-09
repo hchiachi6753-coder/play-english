@@ -14,22 +14,25 @@ function generateReferralCode(): string {
 }
 
 export function ParentFormPage() {
-  const { childInfo, setParentInfo, continueFromParentForm } = useGameStore();
+  const { childInfo, parentInfo, setParentInfo, continueFromParentForm } = useGameStore();
   const [parentName, setParentName] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [salesSource, setSalesSource] = useState<string | null>(null);
   const [referredBy, setReferredBy] = useState<string | null>(null);
 
-  // 檢查 URL 是否有分享碼
+  // 讀取 URL 參數或從 store 取得
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
+      const sales = params.get('sales');
       const ref = params.get('ref');
-      if (ref) {
-        setReferredBy(ref);
-      }
+      
+      // 優先使用 store 中的值（WelcomePage 已經設定過）
+      setSalesSource(parentInfo?.salesSource || sales || null);
+      setReferredBy(parentInfo?.referredBy || ref || sales || null);
     }
-  }, []);
+  }, [parentInfo]);
 
   const handleSubmit = async () => {
     if (!parentName.trim() || !phone.trim()) return;
@@ -44,6 +47,8 @@ export function ParentFormPage() {
       phone: phone.trim(),
       referralCode,
       referredBy: referredBy || undefined,
+      salesSource: salesSource || undefined,
+      referrerName: undefined,  // 會在後端查詢
     });
 
     try {
@@ -57,6 +62,7 @@ export function ParentFormPage() {
           phone: phone.trim(),
           referralCode,
           referredBy: referredBy || null,
+          salesSource: salesSource || null,  // 業務來源
           timestamp: new Date().toISOString(),
         }),
       });

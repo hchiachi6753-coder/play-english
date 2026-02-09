@@ -33,7 +33,9 @@ export interface ParentInfo {
   name: string;
   phone: string;
   referralCode?: string;  // 這個用戶的分享碼
-  referredBy?: string;    // 被誰分享來的
+  referredBy?: string;    // 被誰分享來的（推薦碼）
+  salesSource?: string;   // 業務來源（哪個業務的連結）
+  referrerName?: string;  // 推薦人姓名（如果是客戶轉介紹）
 }
 
 // 程度報告
@@ -149,8 +151,8 @@ export const useGameStore = create<GameState>()(
         const state = get();
         const nextIndex = state.currentQuestionIndex + 1;
         
-        // 第 5 題後顯示家長表單（如果還沒填過）
-        if (nextIndex === 5 && !state.hasFilledParentForm) {
+        // 第 8 題後顯示家長表單（如果還沒填過）
+        if (nextIndex === 8 && !state.hasFilledParentForm) {
           set({ 
             phase: 'parent-form',
             currentQuestionIndex: nextIndex  // 記住下一題位置

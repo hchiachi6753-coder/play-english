@@ -9,7 +9,9 @@ interface LeadData {
   phone: string;
   timestamp: string;
   referralCode?: string;
-  referredBy?: string;
+  referredBy?: string;       // 推薦碼（可能是業務名或客戶碼）
+  salesSource?: string;      // 業務來源（最原始的業務）
+  referrerName?: string;     // 推薦人姓名（如果是客戶轉介紹）
   level?: string;
   accuracy?: number;
   booking?: {
@@ -42,6 +44,8 @@ async function sendToGoogleSheets(data: LeadData) {
         phone: data.phone,
         referralCode: data.referralCode || '',
         referredBy: data.referredBy || '',
+        salesSource: data.salesSource || '',       // 業務來源
+        referrerName: data.referrerName || '',     // 推薦人姓名
         bookingDate: data.booking?.date || '',
         bookingTimeSlot: data.booking?.timeSlot || '',
         level: data.level || '',

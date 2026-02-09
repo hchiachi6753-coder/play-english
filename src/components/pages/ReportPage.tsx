@@ -78,7 +78,7 @@ export function ReportPage() {
       pdf.roundedRect(margin, y, contentWidth, 22, 4, 4, 'S');
       
       pdf.setFontSize(16);
-      pdf.setTextColor(30, 30, 30);
+      pdf.setTextColor(20, 20, 20);  // 深色字體
       pdf.text(`${childInfo.name}`, margin + 10, y + 9);
       pdf.text(`${childInfo.age} 歲`, margin + 80, y + 9);
       
@@ -148,7 +148,7 @@ export function ReportPage() {
       pdf.roundedRect(margin, y, contentWidth, 42, 4, 4, 'F');
       
       pdf.setFontSize(14);
-      pdf.setTextColor(30, 30, 30);
+      pdf.setTextColor(20, 20, 20);  // 深色字體
       pdf.text('難度分析', margin + 10, y + 11);
       
       const difficulties = [
@@ -162,7 +162,7 @@ export function ReportPage() {
       
       difficulties.forEach((d) => {
         pdf.setFontSize(10);
-        pdf.setTextColor(40, 40, 40);
+        pdf.setTextColor(20, 20, 20);  // 深色字體
         pdf.text(d.label, margin + 10, barY + 4);
         
         // 背景條
@@ -178,7 +178,7 @@ export function ReportPage() {
         
         // 數字
         pdf.setFontSize(10);
-        pdf.setTextColor(30, 30, 30);
+        pdf.setTextColor(20, 20, 20);  // 深色字體
         pdf.text(`${d.data.correct}/${d.data.total} (${Math.round(d.data.accuracy)}%)`, margin + 42 + barWidth, barY + 4);
         
         barY += 10;
